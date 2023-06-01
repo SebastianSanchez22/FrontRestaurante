@@ -1,6 +1,6 @@
 import React , { useState } from 'react'
 import { data } from '../data/data';
-import { ShoppingCart} from './ShoppingCart';
+import ShoppingCart from './ShoppingCart';
 
 const Food = () => {
 
