@@ -5,6 +5,8 @@ const Food = () => {
 
 const [foods, setFoods] = useState(data);
 
+const addToCart = 'Añadir al carrito'
+
 //   Filtrar por tipo
 const filterType = (category) => {
   setFoods(
@@ -112,13 +114,21 @@ const filterPrice = (price) => {
               className='w-full h-[200px] object-cover rounded-t-lg'
             />
             <div className='flex justify-between px-2 py-4'>
-              <p className='font-bold'>{item.name}</p>
+              <p className='font-bold text-lg'>{item.name}</p>
               <p>
                 <span className='bg-orange-500 text-white p-1 rounded-full'>
                   {item.price}
                 </span>
               </p>
             </div>
+            <div className='flex justify-between px-2'>
+              <button className='mb-2 ml-2 bg-orange-200 text-gray-900 px-2 py-1 pb-2  rounded-md'>
+                {addToCart}
+              </button>
+              <span className='mb-2 mr-2 text-gray-900 text-lg font-bold px-2 py-1 pb-2 rounded-full self-end'>
+                {item.value}
+              </span>
+              </div>
           </div>
         ))}
       </div>
