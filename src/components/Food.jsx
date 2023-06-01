@@ -1,11 +1,18 @@
 import React , { useState } from 'react'
 import { data } from '../data/data';
+import { ShoppingCart} from './ShoppingCart';
 
 const Food = () => {
 
 const [foods, setFoods] = useState(data);
 
-const addToCart = 'Añadir al carrito'
+const addToCartMessage = 'Añadir al carrito'
+
+const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
 
 //   Filtrar por tipo
 const filterType = (category) => {
@@ -26,6 +33,7 @@ const filterPrice = (price) => {
 };
   return (
     <div className='max-w-[1640px] m-auto px-4 py-12'>
+      <ShoppingCart addToCart={addToCart} />
       <h1 className='text-orange-600 font-bold text-4xl text-center'>
         Items mejor puntuados
       </h1>
@@ -122,8 +130,8 @@ const filterPrice = (price) => {
               </p>
             </div>
             <div className='flex justify-between px-2'>
-              <button className='mb-2 ml-2 bg-orange-200 text-gray-900 px-2 py-1 pb-2  rounded-md'>
-                {addToCart}
+              <button onClick={() => addToCart(item)} className='mb-2 ml-2 bg-orange-200 text-gray-900 px-2 py-1 pb-2  rounded-md'>
+                {addToCartMessage}
               </button>
               <span className='mb-2 mr-2 text-gray-900 text-lg font-bold px-2 py-1 pb-2 rounded-full self-end'>
                 {item.value}
