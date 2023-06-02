@@ -4,19 +4,19 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
     console.log('CartItems', cartItems)
 
   // Función para eliminar un item del carrito
-  const removeFromCart = (itemId) => {
-    const updatedCartItems = cartItems.map((item) => {
-      if (item.id === itemId) {
-        if (item.quantity > 1) {
-          item.quantity -= 1;
-        } else {
-          return null; // Eliminar el producto del carrito
+  const removeFromCart = (item) => {
+    const existingItem = cartItems.findIndex((cartItem) => { return cartItem.name === item.name});
+
+    if (existingItem !== -1) {
+        cartItems[existingItem].quantity -= 1;
+        if(cartItems[existingItem].quantity === 0){
+            cartItems.splice(existingItem, 1);
+            console.log("El objeto fue removido del array.");
         }
-      }
-      return item;
-    });
-  
-    setCartItems(updatedCartItems.filter((item) => item !== null));
+        setCartItems([...cartItems]);
+    }
+
+
   };
 
   // Calcular el total de los items en el carrito
@@ -32,27 +32,35 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
       ) : (
         <>
           <ul className="grid grid-cols-2 gap-4">
-          {cartItems.map((item, index) => (
-  <li key={`${item.id}-${item.name}-${index}`} className="bg-white p-4 shadow rounded">
-    <h3 className="text-lg font-semibold">
-      {item.name} <span className="text-sm">({item.quantity})</span>
-    </h3>
-    <p className="text-gray-600">${item.price} -- {item.value}</p>
-    <button 
-      onClick={() => addToCart(item)} 
-      className="mb-2 ml-2 bg-orange-200 text-gray-900 px-2 py-1 pb-2 rounded-md"
-    >
-      Agregar
-    </button>
-    <button
-      onClick={() => removeFromCart(item.id)}
-      className="bg-red-500 text-white px-4 py-2 rounded mt-2"
-    >
-      Eliminar
-    </button>
-  </li>
-))}
+            <div>
+            <h2 className="text-2xl font-bold mb-4">Nombre del cliente: </h2>
+            <input type="text" placeholder='cliente' />
+            </div>
+            <div>
+            <h2 className="text-2xl font-bold mb-4">Número de teléfono: </h2>
+            <input type="text" placeholder='te' />
+            </div>
 
+          {cartItems.map((item, index) => (
+            <li key={index} className="bg-white p-4 shadow rounded">
+                <h3 className="text-lg font-semibold">
+                    {item.name} x {item.quantity}
+                </h3>
+                <p className="text-gray-600">${item.price} -- {item.value}</p>
+                <button 
+                onClick={() => addToCart(item)} 
+                className="mb-2 ml-2 bg-orange-200 text-gray-900 px-2 py-1 pb-2 rounded-md"
+                >
+                Agregar
+                </button>
+                <button
+                onClick={() => removeFromCart(item)}
+                className="bg-red-500 text-white px-4 py-2 rounded mt-2"
+                >
+                Eliminar
+                </button>
+            </li>
+))}
           </ul>
           <div className="mt-4">
             <h4 className="text-xl font-bold">Total: ${calculateTotal()}</h4>

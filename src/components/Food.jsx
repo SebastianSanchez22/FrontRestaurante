@@ -15,7 +15,7 @@ const getData = async() => {
     const data = await response.json();
     console.log('DATA: ', data)
     setData(data);
-    setFoods(data);;
+    setFoods(data);
   } catch (error) {
     console.error(error);
   }
@@ -26,10 +26,9 @@ useEffect(() => {
 }, []);
 
 const addToCart = (item) => {
-  const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
-
-  if (existingItem) {
-    existingItem.quantity += 1;
+  const existingItem = cartItems.findIndex((cartItem) => { return cartItem.name === item.name});
+  if (existingItem!=-1) {
+    cartItems[existingItem].quantity += 1;
     setCartItems([...cartItems]);
   } else {
     const newItem = { ...item, quantity: 1 };
@@ -38,7 +37,6 @@ const addToCart = (item) => {
 };
 
 //   Filtrar por tipo
-
 const filterType = (category) => {
   setFoods(
     data.filter((item) => {
