@@ -13,7 +13,6 @@ const getData = async() => {
   try {
     const response = await fetch('http://localhost:4000/comidas');
     const data = await response.json();
-    console.log('DATA: ', data)
     setData(data);
     setFoods(data);
   } catch (error) {
@@ -30,9 +29,11 @@ const addToCart = (item) => {
   if (existingItem!=-1) {
     cartItems[existingItem].quantity += 1;
     setCartItems([...cartItems]);
+    console.log(cartItems)
   } else {
     const newItem = { ...item, quantity: 1 };
     setCartItems([...cartItems, newItem]);
+    console.log(cartItems)
   }
 };
 
@@ -55,9 +56,8 @@ const filterPrice = (price) => {
 };
 
   return (
-    <div className='max-w-[1640px] m-auto px-4 py-12'>
-      <ShoppingCart addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems}/>
-      <h1 className='text-orange-600 font-bold text-4xl text-center'>
+    <div className='max-w-[1640px] m-auto px-4 py-8'>
+      <h1 className='text-orange-600 font-bold text-4xl text-center pt-4'>
         Items mejor puntuados
       </h1>
       {/* Filtrar fila */}
@@ -162,6 +162,7 @@ const filterPrice = (price) => {
           </div>
         ))}
       </div>
+      <ShoppingCart addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems}/>
     </div>
   );
 };

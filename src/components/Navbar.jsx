@@ -4,7 +4,6 @@ import { BsFillCartFill,BsFillSaveFill } from 'react-icons/bs';
 import {TbTruckDelivery} from 'react-icons/tb'
 import {FaUserFriends, FaWallet} from 'react-icons/fa'
 import {MdFavorite, MdHelp} from 'react-icons/md'
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -35,11 +34,11 @@ const Navbar = () => {
         </div>
 
         {/* Carrito */}
-        <Link to='/shoppingCart'>
+
+        
         <button className='bg-black text-white hidden md:flex items-center py-2 rounded-full'>
             <BsFillCartFill size={20} className='mr-2'/> Carrito
         </button>
-        </Link>
 
         {/* Menú móvil */}
         {/* Overlay */}
