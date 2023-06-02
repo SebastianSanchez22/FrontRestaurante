@@ -73,7 +73,9 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
 
   return (
 <div name='shoppingCart' className="container mx-auto mt-8">
-  <h2 className="text-3xl font-bold mb-4 text-center">Carrito de compras</h2>
+<h1 className="text-4xl font-bold mb-4 text-center text-orange-600 border-b-2 border-gray-800 pb-2">
+  Carrito de compras
+</h1>
   {error && (
     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
       <p>{error}</p>
@@ -94,7 +96,9 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
     </div>
   )}
   {cartItems.length === 0 ? (
-    <p className="text-center">No hay items en el carrito</p>
+    <p className="text-center text-4xl mt-8 bg-gradient-to-r from-orange-200 to-orange-300 text-black font-bold p-8 rounded-lg">
+    No hay items en el carrito
+  </p>
   ) : (
     <>
       <div className="grid grid-cols-2 gap-4 mt-4">
