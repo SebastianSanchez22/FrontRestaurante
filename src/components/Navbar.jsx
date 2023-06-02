@@ -5,6 +5,7 @@ import {TbTruckDelivery} from 'react-icons/tb'
 import {FaUserFriends, FaWallet} from 'react-icons/fa'
 import {MdFavorite, MdHelp} from 'react-icons/md'
 import { Link } from 'react-router-dom';
+import {Link as LinkScroll} from 'react-scroll'
 
 const Navbar = () => {
 
@@ -36,10 +37,11 @@ const Navbar = () => {
 
         {/* Carrito */}
 
-        
+        <LinkScroll to='shoppingCart'>
         <button className='bg-black text-white hidden md:flex items-center py-2 rounded-full'>
             <BsFillCartFill size={20} className='mr-2'/> Carrito
         </button>
+        </LinkScroll>
 
         {/* Menú móvil */}
         {/* Overlay */}

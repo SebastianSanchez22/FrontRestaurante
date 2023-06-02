@@ -72,7 +72,7 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
 
 
   return (
-<div className="container mx-auto mt-8">
+<div name='shoppingCart' className="container mx-auto mt-8">
   <h2 className="text-3xl font-bold mb-4 text-center">Carrito de compras</h2>
   {error && (
     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
