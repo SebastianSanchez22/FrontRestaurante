@@ -29,7 +29,6 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
         cartItems[existingItem].quantity -= 1;
         if(cartItems[existingItem].quantity === 0){
             cartItems.splice(existingItem, 1);
-            console.log("El objeto fue removido del array.");
         }
         setCartItems([...cartItems]);
     }
@@ -51,7 +50,7 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
       valorTotal: calculateTotal(),
     };
   
-    fetch('http://localhost:4000/pedidos', {
+    fetch('http://ec2-174-129-155-60.compute-1.amazonaws.com:4000/pedidos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -60,8 +59,6 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Manejar la respuesta del backend, por ejemplo, mostrar un mensaje de éxito
-        console.log('Respuesta del backend:', data);
         alert('Compra realizada con éxito');
         setCartItems([]);
         setCustomerName('');
@@ -69,8 +66,6 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
         handleClearInput();
       })
       .catch((error) => {
-        // Manejar el error en caso de que ocurra
-        console.error('Error al realizar la compra:', error);
         alert('Error al realizar la compra');
       });
   };

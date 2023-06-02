@@ -7,7 +7,7 @@ const [data, setData] = useState([]);
 
 const getData = async() => {
     try {
-        const response = await fetch('http://localhost:4000/pedidos');
+        const response = await fetch('http://ec2-174-129-155-60.compute-1.amazonaws.com:4000/pedidos');
         const data = await response.json();
         setData(data);
         console.log(data);

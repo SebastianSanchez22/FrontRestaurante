@@ -11,7 +11,7 @@ const addToCartMessage = 'Añadir al carrito'
 
 const getData = async() => {
   try {
-    const response = await fetch('http://localhost:4000/comidas');
+    const response = await fetch('http://ec2-174-129-155-60.compute-1.amazonaws.com:4000/comidas');
     const data = await response.json();
     setData(data);
     setFoods(data);
@@ -26,14 +26,12 @@ useEffect(() => {
 
 const addToCart = (item) => {
   const existingItem = cartItems.findIndex((cartItem) => { return cartItem.name === item.name});
-  if (existingItem!=-1) {
+  if (existingItem!==-1) {
     cartItems[existingItem].quantity += 1;
     setCartItems([...cartItems]);
-    console.log(cartItems)
   } else {
     const newItem = { ...item, quantity: 1 };
     setCartItems([...cartItems, newItem]);
-    console.log(cartItems)
   }
 };
 
