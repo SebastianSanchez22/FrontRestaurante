@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useRef } from 'react';
+import { BsFillCartFill } from 'react-icons/bs';
 
 const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
 
@@ -167,6 +168,7 @@ const ShoppingCart = ({addToCart, cartItems=[], setCartItems}) => {
           onClick={() => realizarCompra()}
           className="flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md mt-4 mx-auto"
         >
+        <BsFillCartFill size={20} className='mr-2'/>
           Realizar compra
         </button>
       </div>

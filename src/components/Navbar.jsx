@@ -4,6 +4,7 @@ import { BsFillCartFill,BsFillSaveFill } from 'react-icons/bs';
 import {TbTruckDelivery} from 'react-icons/tb'
 import {FaUserFriends, FaWallet} from 'react-icons/fa'
 import {MdFavorite, MdHelp} from 'react-icons/md'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -50,13 +51,12 @@ const Navbar = () => {
             <h2 className='text-2xl p-4'>SPJ <span className='font-bold'>Comidas</span></h2>
             <nav>
                 <ul className='flex flex-col p-4 text-gray-800'>
+                    <Link to='/'>
+                    <li className='text-xl py-4 flex'><BsFillSaveFill size={25} className='mr-4' /> Pagina Principal</li>
+                    </Link>
+                    <Link to='/ordenes'>
                     <li className='text-xl py-4 flex'><TbTruckDelivery size={25} className='mr-4' /> Órdenes</li>
-                    <li className='text-xl py-4 flex'><MdFavorite size={25} className='mr-4' /> Favoritos</li>
-                    <li className='text-xl py-4 flex'><FaWallet size={25} className='mr-4' /> Billetera</li>
-                    <li className='text-xl py-4 flex'><MdHelp size={25} className='mr-4' /> Ayuda!</li>
-                    <li className='text-xl py-4 flex'><AiFillTag size={25} className='mr-4' /> Promociones</li>
-                    <li className='text-xl py-4 flex'><BsFillSaveFill size={25} className='mr-4' /> Los mejores</li>
-                    <li className='text-xl py-4 flex'><FaUserFriends size={25} className='mr-4' /> Invitar Amigos</li>
+                    </Link>
                 </ul>
             </nav>
         </div>

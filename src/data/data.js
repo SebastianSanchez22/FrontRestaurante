@@ -1,6 +1,3 @@
-export const data = [
-  ];
-  
   export const categories = [
     {
       "name":"Comidas rápidas",     image: "https://duyt4h9nfnj50.cloudfront.net/new_search_home_eats_icon/FastFood_BrowseHome@3x.png",
