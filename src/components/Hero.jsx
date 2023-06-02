@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import ShoppingCart from './ShoppingCart'
 
 const Hero = () => {
   return (
@@ -13,11 +11,9 @@ const Hero = () => {
                 <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'> <span className='text-orange-500'>Comida</span> A la mano</h1>
             </div>
             <div>
-            <Link to='/shoppingCart'>
               <img className='w-full max-h-[500px] object-cover' 
                 src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                 alt="/" />
-            </Link>
             </div>
         </div>
     </div>

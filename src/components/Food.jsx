@@ -1,20 +1,44 @@
 import React , { useState } from 'react'
-import { data } from '../data/data';
 import ShoppingCart from './ShoppingCart';
+import { useEffect } from 'react';
 
 const Food = () => {
 
-const [foods, setFoods] = useState(data);
-
+const [data, setData] = useState([]);
+const [foods, setFoods] = useState([]);
+const [cartItems, setCartItems] = useState([]);
 const addToCartMessage = 'Añadir al carrito'
 
-const [cartItems, setCartItems] = useState([]);
+const getData = async() => {
+  try {
+    const response = await fetch('http://localhost:4000/comidas');
+    const data = await response.json();
+    console.log('DATA: ', data)
+    setData(data);
+    setFoods(data);;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-  const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
-  };
+useEffect(() => {
+  getData();
+}, []);
+
+const addToCart = (item) => {
+  const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+    setCartItems([...cartItems]);
+  } else {
+    const newItem = { ...item, quantity: 1 };
+    setCartItems([...cartItems, newItem]);
+  }
+};
 
 //   Filtrar por tipo
+
 const filterType = (category) => {
   setFoods(
     data.filter((item) => {
@@ -31,13 +55,13 @@ const filterPrice = (price) => {
     })
   );
 };
+
   return (
     <div className='max-w-[1640px] m-auto px-4 py-12'>
-      <ShoppingCart addToCart={addToCart} />
+      <ShoppingCart addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems}/>
       <h1 className='text-orange-600 font-bold text-4xl text-center'>
         Items mejor puntuados
       </h1>
-
       {/* Filtrar fila */}
       <div className='flex flex-col lg:flex-row justify-between'>
         {/* Filtrar tipo */}
